@@ -3,7 +3,7 @@ services:
   oobabooga-rocm:
     build:
       context: .
-      dockerfile: Dockerfile.rocm
+      dockerfile: dockerfile.rocm
     container_name: oobabooga-rocm-runner
     restart: unless-stopped
     environment:
