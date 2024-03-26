@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+  oobabooga-rocm:
+    build:
+      context: .
+      dockerfile: Dockerfile.rocm
+    container_name: oobabooga-rocm-runner
+    restart: unless-stopped
+    environment:
+      TZ: "Europe/Rome"
+      ROC_ENABLE_PRE_VEGA: 1
+      COMMANDLINE_ARGS: "--listen --precision full --no-half"
+      ## IMPORTANT!
+      HSA_OVERRIDE_GFX_VERSION: "10.3.0"
+      ROCR_VISIBLE_DEVICES: 1
+      #PYTORCH_HIP_ALLOC_CONF: "garbage_collection_threshold:0.6,max_split_size_mb:128"
+
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "rocm-smi;
+       python server.py --listen"
+    ports:
+      - "7861:80"
+    devices:
+      - "/dev/kfd:/dev/kfd"
+      - "/dev/dri:/dev/dri"
+    group_add:
+      - video
+    ipc: host
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /mnt/<the-dir-with-models>:/sdtemp/models
