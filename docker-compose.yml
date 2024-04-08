@@ -1,14 +1,14 @@
 version: "3.9"
 services:
   gpu:
-   deploy:
+    deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    command: sh -c "nvidia-smi && npm run start"
+    command: sh -c "nvidia-smi && npm run start"  # Corregido: comando en una sola línea
     ports:
-      - "8284:80" 
-    restart: unless-stopped  
+      - "8284:80"
+    restart: unless-stopped
