@@ -1,3 +1,4 @@
+FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 FROM siutin/stable-diffusion-webui-docker:latest-cuda
 
 # Definir el directorio de trabajo en la etapa de construcción
