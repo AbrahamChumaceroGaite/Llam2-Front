@@ -22,8 +22,5 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Exponer el puerto 80
 EXPOSE 80
 
-# Comando para stable-diffusion
-CMD ["bash", "webui.sh", "--share", "--port", "80"]
-
-# Comando para iniciar NGINX
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para stable-diffusion y NGINX
+CMD ["bash", "webui.sh", "--share", "--port", "80"]  # Inicia tu aplicación y NGINX al mismo tiempo
