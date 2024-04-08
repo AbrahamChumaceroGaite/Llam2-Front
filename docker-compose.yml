@@ -1,7 +1,11 @@
 version: "3.9"
 services:
   gpu:
-    deploy:
+  build: .
+  ports:
+      - "8284:80"
+  restart: unless-stopped     
+  deploy:
       resources:
         reservations:
           devices:
@@ -9,6 +13,4 @@ services:
               count: all
               capabilities: [gpu]
     command: sh -c "nvidia-smi && npm run start"
-    ports:
-      - "8284:80"
-    restart: unless-stopped
+
