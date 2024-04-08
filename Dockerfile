@@ -1,10 +1,10 @@
-FROM siutin/stable-diffusion-webui-docker:latest-cpu as builder
+FROM siutin/stable-diffusion-webui-docker:latest-cuda
 
 # Definir el directorio de trabajo
 WORKDIR /app/stable-diffusion-webui
 
 # Comando para stable-diffusion
-CMD ["bash", "webui.sh", "--skip-torch-cuda-test", "--use-cpu", "all", "--share", "--port", "80"]
+CMD ["bash", "webui.sh",  "--share", "--port", "80"]
 
 # Ahora copiamos los archivos necesarios a una nueva imagen de NGINX
 FROM nginx:alpine
