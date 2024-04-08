@@ -1,4 +1,4 @@
-FROM nginx:alpine as builder
+FROM siutin/stable-diffusion-webui-docker:latest-cuda as builder
 
 # Definir el directorio de trabajo en la etapa de construcción
 WORKDIR /app/stable-diffusion-webui
@@ -7,7 +7,7 @@ WORKDIR /app/stable-diffusion-webui
 COPY . .
 
 # Etapa de producción
-FROM siutin/stable-diffusion-webui-docker:latest-cuda
+FROM nginx:alpine 
 
 # Definir el directorio de trabajo en la etapa de producción
 WORKDIR /app/stable-diffusion-webui
