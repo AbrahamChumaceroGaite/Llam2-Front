@@ -1,4 +1,3 @@
-# Etapa de construcción (builder)
 FROM nginx:alpine as builder
 
 # Definir el directorio de trabajo en la etapa de construcción
