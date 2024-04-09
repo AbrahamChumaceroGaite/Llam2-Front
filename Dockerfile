@@ -17,6 +17,8 @@ RUN git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui && \
 	cd /content/stable-diffusion-webui && \
     python launch.py --skip-torch-cuda-test && \
     git reset --hard
+    
+EXPOSE 80
 
 # RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/juggernaut-xl/resolve/main/juggernautXL_version2.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o juggernautXL_version2.safetensors
 CMD cd /content/stable-diffusion-webui && python launch.py --use-cpu all --precision full --no-half --skip-torch-cuda-test --cors-allow-origins=* --api
