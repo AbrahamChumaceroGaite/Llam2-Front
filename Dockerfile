@@ -3,10 +3,10 @@
 # https://gitlab.com/nvidia/container-images/cuda/-/blob/master/dist/11.7.1/ubuntu2204/devel/cudnn8/Dockerfile
 # FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04
 # https://gitlab.com/nvidia/container-images/cuda/-/blob/master/dist/11.7.1/ubuntu2204/base/Dockerfile
-FROM nvidia/cuda:11.7.1-base-ubuntu22.04
+FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y libgl1 libglib2.0-0 wget git git-lfs python3-pip python-is-python3 libcairo2-dev pkg-config python3-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y libgl1 libglib2.0-0 wget git git-lfs python3-pip python-is-python3 libcairo2-dev pkg-config python3-dev && rm -rf /var/lib/apt/lists/*
 
 RUN adduser --disabled-password --gecos '' user
 RUN mkdir /content && chown -R user:user /content
